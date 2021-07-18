@@ -1,6 +1,6 @@
 console.log("GUTEN MORGEN HERR PTERODACTYL");
 
-var tasks = {};
+var tasks = [];
 
 function userInput(taskInput, taskText) {
     // get html content corresponding to user's click
@@ -21,8 +21,15 @@ function userInput(taskInput, taskText) {
     }); 
 
 }
+userInput();
 
 // save tasks to local storage
+var saveTasks = $("saveBtn").click(function() {
+    localStorage.setItem(".new-task", taskP);
+    renderLastRegistered();
+});
 
-
-userInput();
+// use moment.js to define the time
+var now = moment();
+moment();
+console.log(now);
