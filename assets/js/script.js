@@ -24,12 +24,42 @@ function userInput(taskInput, taskText) {
 userInput();
 
 // save tasks to local storage
-var saveTasks = $("saveBtn").click(function() {
-    localStorage.setItem(".new-task", taskP);
-    renderLastRegistered();
+var saveTasks = JSON.parse(localStorage.getItem('new-task'));
+var newTask = [""];
+
+function renderTask(saveTasks) {
+    for (var i = 0; i < saveTasks.length; i++) {
+        var updateTask = $('<p>');
+        updateTask.text(saveTasks[i]);
+        $('#new-task').append(updateTask);
+    }
+}
+
+$('#saveBtn').on('click', function(event) {
+    event.preventDefault();
+    var newTaskList = $("#newTask")
+    .val()
+    .trim();
+
+    newTask.push(newTaskList);
+
+    renderNewTask(saveTasks);
+
+    saveTasks.JSON.stringify(localStorage.setItem("newTask"));
 });
 
 // use moment.js to define the time
 var now = moment();
-moment();
 console.log(now);
+
+function updateColor(taskInput) {
+    var tasks = document.getElementById("#description");
+
+if(now) {
+    document.getElementByIds("#description").setAttribute("style", '.present');
+} else {
+    $(now++).tasks.setAttribute("style", '.future');
+    $(now--).tasks.setAttribute("style", '.past');
+    
+};
+}
